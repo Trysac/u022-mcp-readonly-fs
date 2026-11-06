@@ -9,4 +9,5 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
+- Add the read-only MCP filesystem server `@trysac/mcp-readonly-fs` with realpath containment, deny globs on real paths, size and binary caps, four `readOnlyHint` tools, a stdio CLI runner and a written threat model.
 - Initial project structure from the factory utility template.
