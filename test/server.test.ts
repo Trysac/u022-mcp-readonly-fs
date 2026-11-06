@@ -382,7 +382,10 @@ describe("error results", () => {
     const client = await open();
     const res = await call(client, "stat", { path: "z".repeat(300) });
     expect(res.isError).toBe(true);
-    expect(res.text.length).toBeLessThanOrEqual("ERROR NOT_FOUND: ".length + 200);
+    // Linux rejects a 300-byte name with ENAMETOOLONG (INVALID_PATH); Windows reports NOT_FOUND.
+    const prefix = /^ERROR (NOT_FOUND|INVALID_PATH): /.exec(res.text)?.[0] ?? "";
+    expect(prefix).not.toBe("");
+    expect(res.text.length - prefix.length).toBeLessThanOrEqual(200);
   });
 
   it("sanitises control characters in the echoed path", async () => {
