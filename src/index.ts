@@ -1,20 +1,16 @@
 /**
- * Public entry point of @trysac/mcp-readonly-fs.
- *
- * Replace this placeholder with the utility's real API. Keep every export documented and covered by tests.
+ * Public entry point of @trysac/mcp-readonly-fs: a read-only MCP filesystem
+ * server over allowlisted roots.
  */
 
-/**
- * Builds a greeting for `name`.
- *
- * @param name - Who to greet. Surrounding whitespace is ignored.
- * @returns The greeting, for example `"Hello, Ada!"`.
- * @throws {TypeError} When `name` is empty after trimming.
- */
-export function greet(name: string): string {
-  const trimmed = name.trim();
-  if (trimmed === "") {
-    throw new TypeError("name must not be empty");
-  }
-  return `Hello, ${trimmed}!`;
-}
+export type { PolicyErrorCode } from "./errors.js";
+export { PolicyError } from "./errors.js";
+export type {
+  CreatePolicyInput,
+  FsErrorCode,
+  FsPolicy,
+  ResolveResult,
+} from "./policy.js";
+export { createPolicy, isDenied, resolveSafe } from "./policy.js";
+export type { ReadonlyFsEvent, ReadonlyFsServerOptions } from "./server.js";
+export { createReadonlyFsServer } from "./server.js";

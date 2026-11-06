@@ -1,12 +1,21 @@
 import { describe, expect, it } from "vitest";
-import { greet } from "../src/index.js";
+import * as api from "../src/index.js";
 
-describe("greet", () => {
-  it("greets a trimmed name", () => {
-    expect(greet("  Ada ")).toBe("Hello, Ada!");
+describe("public entry point", () => {
+  it("exports exactly the documented API", () => {
+    expect(Object.keys(api).sort()).toEqual([
+      "PolicyError",
+      "createPolicy",
+      "createReadonlyFsServer",
+      "isDenied",
+      "resolveSafe",
+    ]);
   });
 
-  it("rejects an empty name", () => {
-    expect(() => greet("   ")).toThrow(TypeError);
+  it("exposes callable functions", () => {
+    expect(typeof api.createPolicy).toBe("function");
+    expect(typeof api.resolveSafe).toBe("function");
+    expect(typeof api.isDenied).toBe("function");
+    expect(typeof api.createReadonlyFsServer).toBe("function");
   });
 });
