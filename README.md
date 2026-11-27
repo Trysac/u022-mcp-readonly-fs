@@ -1,7 +1,6 @@
 # mcp-readonly-fs
 
-[![npm version](https://img.shields.io/npm/v/@trysac/mcp-readonly-fs.svg)](https://www.npmjs.com/package/@trysac/mcp-readonly-fs)
-[![license: MIT](https://img.shields.io/npm/l/@trysac/mcp-readonly-fs.svg)](LICENSE)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![CI](https://github.com/Trysac/u022-mcp-readonly-fs/actions/workflows/ci.yml/badge.svg)](https://github.com/Trysac/u022-mcp-readonly-fs/actions/workflows/ci.yml)
 
 Read-only MCP filesystem server over allowlisted roots with realpath containment, deny globs on real paths, size and binary caps, and readOnlyHint tools
@@ -12,9 +11,15 @@ Giving an agent file access through a general filesystem server exposes write to
 
 ## Install
 
+Not published to npm yet. Build it from a clone, then install it from the local path:
+
 ```sh
-npm install @trysac/mcp-readonly-fs
+git clone https://github.com/Trysac/u022-mcp-readonly-fs.git
+cd u022-mcp-readonly-fs && npm ci && npm run build
+cd ../your-project && npm install ../u022-mcp-readonly-fs
 ```
+
+Imports keep the package name: `import { ... } from "@trysac/mcp-readonly-fs"`.
 
 Requires Node.js 20 or newer. The package ships ES modules with TypeScript declarations. Runtime dependencies are `@modelcontextprotocol/sdk` (^1.23.0) and `zod` (^4.1.0).
 
